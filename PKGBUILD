@@ -1,6 +1,6 @@
 pkgname=qt6-qtquick3d
-pkgver=6.9.2
-pkgrel=1
+pkgver=6.10.0
+pkgrel=2
 pkgdesc="Qt module and API for defining 3D content in Qt Quick"
 arch=('x86_64')
 url="https://www.qt.io"
@@ -29,11 +29,11 @@ makedepends=(
 )
 source=(git+https://code.qt.io/qt/${pkgname#*-}#tag=v${pkgver}
     assimp-6.patch)
-sha256sums=(89afdd631d89a3be17adef93638f4406be374bbc2da438be741a28211f3f211c
+sha256sums=(86b647b0b728558888a92427de506f473aef63c379818662eb3395cd6ca7cddf
     573f00cdad90d77786fba80066d61d5ee97fc56a8b11d0896949acd16bda8e91)
 
 prepare() {
-        cd ${pkgname#*-}
+    cd ${pkgname#*-}
 
     patch -p1 < ${srcdir}/assimp-6.patch
 }
@@ -60,4 +60,3 @@ package() {
 
     DESTDIR=${pkgdir} cmake --install flarebird-build
 }
-
